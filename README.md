@@ -1,38 +1,33 @@
-# Professional Portfolio Starter
+# Siva Sankar Portfolio
 
-Production-ready starter structure for a personal portfolio with strong UI architecture and caching defaults.
+Production-ready portfolio showcasing backend-focused full stack development experience.
 
 ## Stack
 
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
-- API route with cache headers
+- Incremental Static Regeneration (ISR)
+- API caching with s-maxage & stale-while-revalidate
 
-## Why this structure
+## Architecture Highlights
 
-- UI is split into reusable sections and UI primitives (`components/sections`, `components/ui`)
-- Content is separate from views (`content/`), so editing portfolio data is simple
-- Page and API use incremental revalidation for fast and fresh content
-- Static assets under `public/images` can be cached aggressively
+- UI split into reusable sections and UI primitives (`components/sections`, `components/ui`)
+- Content separated from views (`content/`) for maintainability
+- Page-level ISR (`revalidate = 3600`)
+- API caching strategy implemented
+- Long-lived immutable caching for static assets under `public/images`
 
-## Project layout
+## Project Structure
 
-- `app/`: routes, layout, page, API routes
-- `components/`: section components and UI primitives
-- `content/`: portfolio data
-- `lib/`: shared config and cache constants
-- `public/images/`: optimized image assets
+- `app/` → routes, layout, page, API routes
+- `components/` → section components and UI primitives
+- `content/` → portfolio data
+- `lib/` → shared config and cache constants
+- `public/images/` → optimized image assets
 
-## Run locally
+## Run Locally
 
 ```bash
 npm install
 npm run dev
-```
-
-## Production cache notes
-
-- `app/page.tsx` uses `revalidate = 3600`
-- `app/api/portfolio/route.ts` uses `s-maxage` and `stale-while-revalidate`
-- `next.config.ts` sets immutable caching for `/images/*`
